@@ -20,14 +20,14 @@ public class ProductEntity {
     @GeneratedValue
     private  Long id;
 
+
     private String name;
-
-
 
     private Float price;
 
     private Float stock;
 
+    @Column(nullable = true, unique = true)
     private String barcode;
 
     private String description;

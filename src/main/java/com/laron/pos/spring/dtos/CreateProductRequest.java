@@ -21,10 +21,6 @@ public class CreateProductRequest {
     private String name;
 
 
-    private Float price;
-
-    private Float stock;
-
     private String barcode;
 
     private String description;

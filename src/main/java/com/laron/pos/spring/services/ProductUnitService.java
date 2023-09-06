@@ -11,4 +11,8 @@ public interface ProductUnitService {
     public ProductUnitEntity createProductUnit(ProductUnitRequest productUnitRequest);
 
     public List<ProductUnitEntity> getAllProductUnits();
+
+    public String deleteProductUnit(Long id);
+
+    public ProductUnitEntity editProducUnit (Long id, ProductUnitRequest unitRequest);
 }

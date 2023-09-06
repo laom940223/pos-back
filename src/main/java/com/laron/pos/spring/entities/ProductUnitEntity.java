@@ -1,6 +1,7 @@
 package com.laron.pos.spring.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,10 +36,11 @@ public class ProductUnitEntity {
     @Column( nullable = false)
     private Boolean fractional;
 
-
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "buyUnit")
     private List<ProductEntity> buyProducts;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "saleUnit")
     private List<ProductEntity> saleProducts;
 
