@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -52,4 +53,41 @@ public class GlobalHandler {
     }
 
 
+
+    @ExceptionHandler(SQLException.class)
+    public ResponseEntity<ServerResponse<?>> handleSQLException (SQLException ex){
+
+
+        System.out.println(ex.getErrorCode());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+
+                ServerResponse.builder()
+                        .errors(List.of( AppError.builder()
+                                        .location("request")
+                                        .message("Something went wrong with the sql statement")
+                                .build() ))
+                        .build()
+
+        );
+    }
+
+
+    @ExceptionHandler(ResourceNotFound.class)
+    public ResponseEntity<ServerResponse<?>> resourceNotFound (ResourceNotFound ex){
+
+
+
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+
+                ServerResponse.builder()
+                        .errors(List.of( AppError.builder()
+                                .location("request")
+                                .message(ex.getMessage())
+                                .build() ))
+                        .build()
+
+        );
+    }
 }

@@ -16,4 +16,9 @@ public interface ProductService {
 
     public List<ProductEntity> getAllProducts();
 
+    public String deleteProduct(Long id);
+
+    public ProductEntity editProduct(Long id, CreateProductRequest productRequest);
+
+    public ProductEntity getProductById( Long id);
 }
