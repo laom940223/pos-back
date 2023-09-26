@@ -232,4 +232,16 @@ public class ProductServiceImp implements ProductService{
         return productRepo.findById(id).orElseThrow(()-> new ResourceNotFound("The product was not found"));
 
     }
+
+    @Override
+    public ProductEntity getProductByBarcode(String barcode) {
+        return productRepo.findByBarcode(barcode).orElseThrow(()-> new ResourceNotFound("The product was not found"));
+    }
+
+    @Override
+    public List<ProductEntity> searchProductByName(String query) {
+        return productRepo.findByNameContaining(query);
+    }
+
+
 }

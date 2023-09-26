@@ -24,14 +24,10 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<ServerResponse<?>> getAllUsers(){
-
-
         return ResponseEntity.ok(
-
                 ServerResponse.builder()
                         .data( userService.getAllUsers() )
                         .build()
-
         );
     }
 

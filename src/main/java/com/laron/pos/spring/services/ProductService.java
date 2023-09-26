@@ -21,4 +21,9 @@ public interface ProductService {
     public ProductEntity editProduct(Long id, CreateProductRequest productRequest);
 
     public ProductEntity getProductById( Long id);
+
+    public ProductEntity getProductByBarcode(String barcode);
+
+    public List<ProductEntity> searchProductByName(String query);
+
 }

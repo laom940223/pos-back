@@ -1,6 +1,7 @@
 package com.laron.pos.spring.controllers;
 
 import com.laron.pos.spring.dtos.CreateProductRequest;
+import com.laron.pos.spring.dtos.SearchRequest;
 import com.laron.pos.spring.dtos.utils.ServerResponse;
 import com.laron.pos.spring.repo.PricesRepo;
 import com.laron.pos.spring.services.ProductService;
@@ -88,6 +89,26 @@ public class ProductController {
     }
 
 
+    @PostMapping(path = "/barcode")
+    public ResponseEntity<ServerResponse<?>> searchByBarcode(@RequestBody SearchRequest searchRequest){
 
+
+        return ResponseEntity.ok(
+                ServerResponse.builder()
+                        .data(productService.getProductByBarcode(searchRequest.getQuery()))
+                        .build()
+        );
+    }
+
+    @PostMapping(path = "/search")
+    public ResponseEntity<ServerResponse<?>> searchByName(@RequestBody SearchRequest searchRequest){
+
+
+        return ResponseEntity.ok(
+                ServerResponse.builder()
+                        .data(productService.searchProductByName(searchRequest.getQuery()))
+                        .build()
+        );
+    }
 
 }
