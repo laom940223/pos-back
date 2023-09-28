@@ -28,6 +28,7 @@ public class CreateUserRequest {
     private String lastname;
 
 
+    @NotBlank(message = "Please provide an email")
     @Email(message = "Please provide a valid email")
     private String email;
 

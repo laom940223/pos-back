@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,6 +32,9 @@ public class CashRegisterSession {
     private Float closingAmount;
 
 
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "session")
+    private List<OperationEntity> operations;
 
 
     @Column(updatable = false)
